@@ -82,8 +82,6 @@ var whiteGem = Math.floor(Math.random() * 11 + 2)
 //Create a function to update your score
 function scoreUpdate(){
     $("#your-score").html(yourScore)
-    console.log(yourScore)
-    console.log(targetScore)
 
     if(yourScore==targetScore){
     wins++
@@ -110,7 +108,7 @@ function newGame(){
     $("#target-score").html(targetScore)
     $("#wins").html(wins)
     $("#losses").html(losses)
-    console.log("new game")
+   
 }
 
 newGame()
