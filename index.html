@@ -83,6 +83,19 @@ var whiteGem = Math.floor(Math.random() * 11 + 2)
 function scoreUpdate(){
     $("#your-score").html(yourScore)
     console.log(yourScore)
+    console.log(targetScore)
+
+    if(yourScore==targetScore){
+    wins++
+    console.log("You won")
+    newGame()
+    }
+
+    if(yourScore>targetScore){
+    losses++
+    console.log("You lost")
+    newGame()
+    }
 }
 
 //Create a new game function that resets all the variables
@@ -93,6 +106,7 @@ function newGame(){
     greenGem = Math.floor(Math.random() * 11 + 2)
     whiteGem = Math.floor(Math.random() * 11 + 2)
     targetScore = Math.floor(Math.random() * 101 + 19)
+    $("#your-score").html(yourScore)
     $("#target-score").html(targetScore)
     $("#wins").html(wins)
     $("#losses").html(losses)
@@ -123,17 +137,7 @@ $("#white-gem").on("click", function(){
 })
 
 //Write a win and loss condition and start a new game
-if(yourScore==targetScore){
-    wins++
-    console.log("You won")
-    newGame()
-}
 
-if(yourScore>targetScore){
-    losses++
-    console.log("You lost")
-    newGame()
-}
 
 </script>
 </body>
