@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body class="alert-dark">
+    <div class="container">
+    <div class="row">
+    <h1>
+        The Rap Game!
+    </h1>
+    </div>
+    <div class="row">
+    <p>
+        Click the rappers to add to your score. You win by getting your score to equal the target score.
+    </p>
+    </div>
+    <!--Create 4 Gem IDs with pictures-->
+    <div class="row">
+    <div class="col">
+    <p>
+        <img id="red-gem" src="assets/images/kanye.jpeg">
+    </p>
+    </div>
+    <div class="col">
+    <p>
+        <img id="blue-gem" src="assets/images/djkhaled.jpeg">
+    </p>
+    </div>
+    <div class="col">
+    <p>
+        <img id="green-gem" src="assets/images/drake.jpeg">
+    </p>
+    </div>
+    <div class="col">
+    <p>
+        <img id="white-gem" src="assets/images/flocka.jpeg">
+    </p>
+    </div>
+    </div>
+
+    <!--Create "your score" and "target score" divs-->
+    <div class = "row">
+    <div class="col-3">
+    <p>
+        Your Score: <span id="your-score"></span>
+    </p>
+    </div>
+    </div>
+    <p>
+        Target Score: <span id="target-score"></span>
+    </p>
+
+    <!--Write a wins and losses counter-->
+    <p>
+        Wins: <span id="wins"></span>
+    </p>
+    <p>
+        Losses: <span id="losses"></span>
+    </p>
+    </div>
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+//Define your score, target score, wins and losses
+var yourScore = 0
+var targetScore = Math.floor(Math.random() * 102 + 19)
+var wins = 0
+var losses = 0
+
+//Define values for each gem
+var redGem = Math.floor(Math.random() * 11 + 2)
+var blueGem = Math.floor(Math.random() * 11 + 2)
+var greenGem = Math.floor(Math.random() * 11 + 2)
+var whiteGem = Math.floor(Math.random() * 11 + 2)
+
+//Create a function to update your score
+function scoreUpdate(){
+    $("#your-score").html(yourScore)
+    console.log(yourScore)
+}
+
+//Create a new game function that resets all the variables
+function newGame(){
+    yourScore = 0
+    redGem = Math.floor(Math.random() * 11 + 2)
+    blueGem = Math.floor(Math.random() * 11 + 2)
+    greenGem = Math.floor(Math.random() * 11 + 2)
+    whiteGem = Math.floor(Math.random() * 11 + 2)
+    targetScore = Math.floor(Math.random() * 101 + 19)
+    $("#target-score").html(targetScore)
+    $("#wins").html(wins)
+    $("#losses").html(losses)
+    console.log("new game")
+}
+
+newGame()
+
+//Write functions that add value to your score when you click on the gems
+$("#red-gem").on("click", function(){
+    yourScore = yourScore + redGem
+    scoreUpdate()
+})
+
+$("#blue-gem").on("click", function(){
+    yourScore = yourScore + blueGem
+    scoreUpdate()
+})
+
+$("#green-gem").on("click", function(){
+    yourScore = yourScore + greenGem
+    scoreUpdate()
+})
+
+$("#white-gem").on("click", function(){
+    yourScore = yourScore + whiteGem
+    scoreUpdate()
+})
+
+//Write a win and loss condition and start a new game
+if(yourScore==targetScore){
+    wins++
+    console.log("You won")
+    newGame()
+}
+
+if(yourScore>targetScore){
+    losses++
+    console.log("You lost")
+    newGame()
+}
+
+</script>
+</body>
+</html>
